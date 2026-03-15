@@ -88,8 +88,14 @@
       <!-- LEFT COLUMN: Product Images -->
       <div class="product-image-col">
         <div class="product-slides">
+          <button class="slider-arrow arrow-prev" aria-label="Vorige afbeelding">
+            <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" stroke="currentColor" fill="none" stroke-width="2" /></svg>
+          </button>
           <img class="active" src="/towel-standard.jpg" alt="Set van 2 badhanddoeken — standaard foto" />
           <img src="/towel-blue-high.png" alt="Set van 2 badhanddoeken — sfeerbeeld" />
+          <button class="slider-arrow arrow-next" aria-label="Volgende afbeelding">
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke="currentColor" fill="none" stroke-width="2" /></svg>
+          </button>
         </div>
         <div class="image-dots">
           <div class="dot active" data-index="0"></div>
@@ -160,17 +166,27 @@
 
   <!-- Image switcher script -->
   <script>
-    document.querySelectorAll('.image-dots .dot').forEach(dot => {
-      dot.addEventListener('click', () => {
-        const index = parseInt(dot.dataset.index);
-        const slides = document.querySelectorAll('.product-slides img');
-        const dots = document.querySelectorAll('.image-dots .dot');
-        slides.forEach(s => s.classList.remove('active'));
-        dots.forEach(d => d.classList.remove('active'));
-        slides[index].classList.add('active');
-        dots[index].classList.add('active');
-      });
+    const slides = document.querySelectorAll('.product-slides img');
+    const dots = document.querySelectorAll('.image-dots .dot');
+    let currentIdx = 0;
+
+    function showSlide(index) {
+      if (index < 0) index = slides.length - 1;
+      if (index >= slides.length) index = 0;
+      currentIdx = index;
+      
+      slides.forEach(s => s.classList.remove('active'));
+      dots.forEach(d => d.classList.remove('active'));
+      slides[currentIdx].classList.add('active');
+      dots[currentIdx].classList.add('active');
+    }
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => showSlide(idx));
     });
+
+    document.querySelector('.arrow-prev').addEventListener('click', () => showSlide(currentIdx - 1));
+    document.querySelector('.arrow-next').addEventListener('click', () => showSlide(currentIdx + 1));
   </script>
 
 </body>
