@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Productpagina — Geel Lage Saturatie</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Shared product styles -->
+  <link rel="stylesheet" href="/product-styles.css" />
+
+  <!-- =====================================================================
+       THEME: Yellow — Low Saturation (40%)
+       Accent HEX: #B3B34D
+       ===================================================================== -->
+  <style>
+    :root {
+      --accent: #B3B34D;
+      --accent-light: #d6d6a0;
+      --accent-bg: #f5f5e6;
+      --accent-border: #dcdca8;
+      --accent-highlight: #eeeec8;
+      --cta-text: #fff;
+      --header-text: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================== HEADER ============================== -->
+  <header class="site-header">
+    <div class="header-left">
+      <span class="brand-name">HomeStyle</span>
+    </div>
+
+    <div class="header-search">
+      <svg class="search-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" stroke-linecap="round"/>
+      </svg>
+      <input type="text" placeholder="What are you looking for?" readonly />
+    </div>
+
+    <div class="header-right">
+      <div class="header-cart">
+        <span>€0,00</span>
+      </div>
+      <div class="cart-badge">
+        <svg class="header-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M16 10a4 4 0 01-8 0" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="badge">0</span>
+      </div>
+      <svg class="header-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="12" cy="7" r="4"/>
+      </svg>
+    </div>
+  </header>
+
+  <!-- ============================== NAV BAR ============================== -->
+  <nav class="nav-bar">
+    <ul class="nav-list">
+      <li><a href="#">Products</a></li>
+      <li><a href="#">New Arrivals</a></li>
+      <li><a href="#">Inspiration</a></li>
+      <li><a href="#">Sale</a></li>
+      <li><a href="#">Offers</a></li>
+    </ul>
+  </nav>
+
+  <!-- ============================== BREADCRUMB =========================== -->
+  <div class="breadcrumb">
+    <a href="#">Home</a><span>›</span>
+    <a href="#">Products</a><span>›</span>
+    <a href="#">Badkamer</a><span>›</span>
+    <span class="current">Set van 2 badhanddoeken</span>
+  </div>
+
+  <!-- ========================= MAIN PRODUCT SECTION ====================== -->
+  <section class="product-section">
+    <div class="product-grid">
+
+      <!-- LEFT COLUMN: Product Image -->
+      <div class="product-image-col">
+        <img src="/towel-yellow-low.png" alt="Set van 2 badhanddoeken" />
+        <div class="image-dots">
+          <div class="dot active"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Product Details -->
+      <div class="product-details">
+
+        <span class="product-sku">TOWEL-SET-002</span>
+
+        <h1 class="product-name">Set van 2 badhanddoeken</h1>
+
+        <p class="product-description">
+          Een set van 2 badhanddoeken gemaakt van <span class="highlight">100% organische katoen</span>, een natuurlijk en <span class="highlight">slijtvast</span> materiaal.
+        </p>
+
+        <!-- Price + Quantity + CTA -->
+        <div class="price-row">
+          <span class="product-price">€14,95</span>
+
+          <div class="quantity-picker">
+            <button type="button" aria-label="Verminder aantal">−</button>
+            <div class="qty-value">1</div>
+            <button type="button" aria-label="Verhoog aantal">+</button>
+          </div>
+
+          <button class="cta-button">
+            ADD TO CART +
+          </button>
+        </div>
+
+        <!-- Stock -->
+        <div class="stock-row">
+          <div class="stock-dot">
+            <svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <span class="stock-label">In Stock</span>
+          <span class="stock-link">See payment and delivery conditions</span>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="feature-cards">
+          <!-- Card 1: Machine Washable -->
+          <div class="feature-card">
+            <svg class="feature-card-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <circle cx="12" cy="14" r="4"/>
+              <circle cx="7" cy="7" r="1" fill="var(--accent)"/>
+              <circle cx="10" cy="7" r="1" fill="var(--accent)"/>
+            </svg>
+            <div class="feature-card-text">
+              <h4>Machinewasbaar tot 60°C</h4>
+              <p>Eenvoudig te reinigen in de wasmachine op hoge temperatuur.</p>
+            </div>
+          </div>
+
+          <!-- Card 2: Durable Material -->
+          <div class="feature-card">
+            <svg class="feature-card-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+              <path d="M8 12l3 3 5-5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div class="feature-card-text">
+              <h4>Duurzaam materiaal</h4>
+              <p>Gemaakt van 100% organische katoen, slijtvast en milieuvriendelijk.</p>
+            </div>
+          </div>
+
+          <!-- Card 3: Soft & Absorbent -->
+          <div class="feature-card">
+            <svg class="feature-card-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/>
+            </svg>
+            <div class="feature-card-text">
+              <h4>Absorberend & zacht</h4>
+              <p>500 g/m² biedt maximale absorptie en een zachte textuur.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= FULL-WIDTH DIVIDER ======================== -->
+  <hr class="full-divider" />
+
+  <!-- =================== BELOW THE FOLD: Details + Features ============== -->
+  <section class="product-below">
+    <div class="below-grid">
+
+      <!-- Left: Product Details -->
+      <div class="below-section">
+        <h2>Product Details</h2>
+        <p>Een set van 2 badhanddoeken gemaakt van <span class="highlight">100% organische katoen</span>, een natuurlijk en <span class="highlight">slijtvast</span> materiaal.</p>
+        <p>Afmetingen: 76 cm × 147 cm</p>
+        <p>Gewicht: 500 g/m²</p>
+        <p>Prijs: €14,95</p>
+      </div>
+
+      <!-- Right: Key Features (Onderhoud) -->
+      <div class="below-section">
+        <h2>Onderhoud</h2>
+        <ul class="key-features-list">
+          <li><span class="bullet"></span>Machinewasbaar tot 60°C</li>
+          <li><span class="bullet"></span>Niet bleken</li>
+          <li><span class="bullet"></span>Bestand tegen drogen in de droogtrommel</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>
