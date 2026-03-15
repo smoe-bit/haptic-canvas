@@ -87,11 +87,13 @@
 
       <!-- LEFT COLUMN: Product Images -->
       <div class="product-image-col">
-        <img src="/towel-standard.jpg" alt="Set van 2 badhanddoeken — standaard foto" />
-        <img src="/towel-yellow-low.png" alt="Set van 2 badhanddoeken — sfeerbeeld" />
+        <div class="product-slides">
+          <img class="active" src="/towel-standard.jpg" alt="Set van 2 badhanddoeken — standaard foto" />
+          <img src="/towel-yellow-low.png" alt="Set van 2 badhanddoeken — sfeerbeeld" />
+        </div>
         <div class="image-dots">
-          <div class="dot active"></div>
-          <div class="dot"></div>
+          <div class="dot active" data-index="0"></div>
+          <div class="dot" data-index="1"></div>
         </div>
       </div>
 
@@ -155,6 +157,21 @@
       </div>
     </div>
   </section>
+
+  <!-- Image switcher script -->
+  <script>
+    document.querySelectorAll('.image-dots .dot').forEach(dot => {
+      dot.addEventListener('click', () => {
+        const index = parseInt(dot.dataset.index);
+        const slides = document.querySelectorAll('.product-slides img');
+        const dots = document.querySelectorAll('.image-dots .dot');
+        slides.forEach(s => s.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('active'));
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+      });
+    });
+  </script>
 
 </body>
 </html>
