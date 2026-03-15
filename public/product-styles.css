@@ -427,50 +427,22 @@ button {
 }
 
 /* ==========================================================================
-   FEATURE CARDS (Free Delivery, Warranty, etc.)
+   INLINE DETAILS (Productdetails & Onderhoud — in right column)
    ========================================================================== */
-.feature-cards {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  border: 1px solid #e8e8e8;
-  border-radius: 6px;
-  overflow: hidden;
-  margin-top: 4px;
-}
-
-.feature-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 14px 18px;
-  border-bottom: 1px solid #e8e8e8;
-}
-
-.feature-card:last-child {
-  border-bottom: none;
-}
-
-.feature-card-icon {
-  width: 28px;
-  height: 28px;
-  flex-shrink: 0;
-  stroke: var(--accent);
-  fill: none;
-  stroke-width: 1.5;
-}
-
-.feature-card-text h4 {
-  font-size: 0.82rem;
+.inline-details h3 {
+  font-size: 0.85rem;
   font-weight: 700;
-  color: #222;
-  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #333;
+  margin-bottom: 10px;
 }
 
-.feature-card-text p {
-  font-size: 0.75rem;
-  color: #888;
-  line-height: 1.4;
+.inline-details p {
+  font-size: 0.88rem;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 4px;
 }
 
 /* ==========================================================================
@@ -480,54 +452,12 @@ button {
   border: none;
   height: 1px;
   background: #e8e8e8;
-  margin: 24px 0;
-}
-
-.full-divider {
-  border: none;
-  height: 1px;
-  background: #e8e8e8;
-  margin: 0;
+  margin: 8px 0;
 }
 
 /* ==========================================================================
-   BELOW-THE-FOLD: Product Details + Key Features
+   KEY FEATURES / CARE LIST
    ========================================================================== */
-.product-below {
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 32px 32px 64px;
-}
-
-.below-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: start;
-}
-
-.below-section h2 {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #111;
-  margin-bottom: 16px;
-}
-
-.below-section p {
-  font-size: 0.88rem;
-  color: #555;
-  line-height: 1.7;
-  margin-bottom: 12px;
-}
-
-.below-section .highlight {
-  background-color: var(--accent-highlight);
-  padding: 1px 4px;
-  border-radius: 3px;
-  font-weight: 500;
-}
-
-/* Key Features List */
 .key-features-list {
   list-style: none;
   display: flex;
