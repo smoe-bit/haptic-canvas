@@ -23,10 +23,11 @@
       --accent: #B3B34D;
       --accent-light: #d6d6a0;
       --accent-bg: #f5f5e6;
-      --accent-border: #dcdca8;
-      --accent-highlight: #eeeec8;
-      --cta-text: #fff;
-      --header-text: #fff;
+      --accent-border: #B3B34D;
+      --accent-highlight: #B3B34D;
+      --cta-text: #000;
+      --header-text: #000;
+      --highlight-text: #000;
     }
   </style>
 </head>
@@ -86,7 +87,13 @@
   <section class="product-section">
     <div class="product-grid">
 
-      <!-- LEFT COLUMN: Product Images -->
+      <!-- FAR LEFT: Thumbnails -->
+      <div class="product-thumbnails">
+        <img src="/towel-standard.jpg" alt="Thumbnail 1" class="thumb active" data-index="0" />
+        <img src="/towel-yellow-low.png" alt="Thumbnail 2" class="thumb" data-index="1" />
+      </div>
+
+      <!-- MIDDLE COLUMN: Product Images -->
       <div class="product-image-col">
         <div class="product-slides">
           <button class="slider-arrow arrow-prev" aria-label="Vorige afbeelding">
@@ -144,9 +151,10 @@
         <!-- Productdetails (verplaatst van onder de fold) -->
         <div class="inline-details">
           <h3>Productdetails</h3>
-          <p>Afmetingen: 76 cm × 147 cm</p>
-          <p>Gewicht: 500 g/m²</p>
-          <p>Prijs: €14,95</p>
+          <ul class="key-features-list">
+            <li><span class="bullet"></span>Afmetingen: 76 cm × 147 cm</li>
+            <li><span class="bullet"></span>Gewicht: 500 g/m²</li>
+          </ul>
         </div>
 
         <hr class="section-divider" />
@@ -169,6 +177,7 @@
   <script>
     const slides = document.querySelectorAll('.product-slides img');
     const dots = document.querySelectorAll('.image-dots .dot');
+    const thumbs = document.querySelectorAll('.product-thumbnails img');
     let currentIdx = 0;
 
     function showSlide(index) {
@@ -178,12 +187,19 @@
       
       slides.forEach(s => s.classList.remove('active'));
       dots.forEach(d => d.classList.remove('active'));
+      thumbs.forEach(t => t.classList.remove('active'));
+      
       slides[currentIdx].classList.add('active');
       dots[currentIdx].classList.add('active');
+      thumbs[currentIdx].classList.add('active');
     }
 
     dots.forEach((dot, idx) => {
       dot.addEventListener('click', () => showSlide(idx));
+    });
+
+    thumbs.forEach((thumb, idx) => {
+      thumb.addEventListener('click', () => showSlide(idx));
     });
 
     document.querySelector('.arrow-prev').addEventListener('click', () => showSlide(currentIdx - 1));
