@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>desk_organiser_0013i.html</title>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Shared product styles -->
+  <link rel="stylesheet" href="/product-styles.css" />
+
+  <!-- =====================================================================
+       THEME: LS Red
+       Accent HEX: #B34D4D
+       ===================================================================== -->
+  <style>
+    :root {
+      --accent: #B34D4D;
+      --accent-light: #f9ecec;
+      --accent-bg: #fffafa;
+      --accent-border: #B34D4D;
+      --accent-highlight: #B34D4D;
+      --cta-text: #FFFFFF;
+      --header-text: #FFFFFF;
+      --highlight-text: #FFFFFF;
+    }
+    .key-features-list li {
+      align-items: flex-start;
+    }
+    .key-features-list li .bullet {
+      margin-top: 7px;
+    }
+
+    /* Zoom & Video functionality override */
+    .product-slides {
+      overflow: hidden;
+    }
+    .product-slides img, 
+    .product-slides video {
+      pointer-events: auto !important;
+      transition: transform 0.3s ease-out;
+    }
+    .product-slides img {
+      cursor: zoom-in;
+    }
+    .product-slides img.zoomed {
+      transform: scale(2);
+      cursor: zoom-out;
+    }
+
+    /* Video styles */
+    .product-video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: none;
+    }
+    .product-video.active {
+      display: block;
+    }
+
+    /* Thumbnail for video */
+    .thumb.video-thumb {
+      position: relative;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .thumb.video-thumb video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+    .play-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 30px;
+      height: 30px;
+      background: rgba(0,0,0,0.5);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      pointer-events: none;
+    }
+    .play-overlay svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================== HEADER ============================== -->
+  <header class="site-header">
+    <div class="header-left">
+      <span class="brand-name">HomeStyle</span>
+    </div>
+
+    <div class="header-search">
+      <svg class="search-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="11" cy="11" r="8" /><path d="M21 21l-4.35-4.35" stroke-linecap="round"/>
+      </svg>
+      <input type="text" placeholder="Waar bent u naar op zoek?" readonly />
+    </div>
+
+    <div class="header-right">
+      <div class="header-cart">
+        <span>€0,00</span>
+      </div>
+      <div class="cart-badge">
+        <svg class="header-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M16 10a4 4 0 01-8 0" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="badge">0</span>
+      </div>
+      <svg class="header-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="12" cy="7" r="4"/>
+      </svg>
+    </div>
+  </header>
+
+  <!-- ============================== NAV BAR ============================== -->
+  <nav class="nav-bar">
+    <ul class="nav-list">
+      <li><a href="#">Producten</a></li>
+      <li><a href="#">Nieuw</a></li>
+      <li><a href="#">Inspiratie</a></li>
+      <li><a href="#">Sale</a></li>
+      <li><a href="#">Aanbiedingen</a></li>
+    </ul>
+  </nav>
+
+  <!-- ============================== BREADCRUMB =========================== -->
+  <div class="breadcrumb">
+    <a href="#">Home</a><span>›</span>
+    <a href="#">Producten</a><span>›</span>
+    <a href="#">Opbergers en organisers</a><span>›</span>
+    <span class="current">Bureau organiser</span>
+  </div>
+
+  <!-- ========================= MAIN PRODUCT SECTION ====================== -->
+  <section class="product-section">
+    <div class="product-grid">
+
+      <!-- FAR LEFT: Thumbnails -->
+      <div class="product-thumbnails">
+        <img src="/Resources/Productfoto%201%20deskorganizer.avif" alt="Thumbnail 1" class="thumb active" data-index="0" />
+        <img src="/Resources/Productfoto%202%20(rlls).jpg" alt="Thumbnail 2" class="thumb" data-index="1" />
+        <img src="/Resources/desk_organiser_bathroom.avif" alt="Thumbnail 3" class="thumb" data-index="2" />
+        <div class="thumb video-thumb" data-index="3">
+          <video src="/Resources/desk_organiser_video.mov#t=0.1" preload="metadata" muted></video>
+          <div class="play-overlay">
+            <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- MIDDLE COLUMN: Product Images -->
+      <div class="product-image-col">
+        <div class="product-slides">
+          <button class="slider-arrow arrow-prev" aria-label="Vorige afbeelding">
+            <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" stroke="currentColor" fill="none" stroke-width="2" /></svg>
+          </button>
+          <img class="active" src="/Resources/Productfoto%201%20deskorganizer.avif" alt="Bureau organiser — standaard foto" />
+          <img src="/Resources/Productfoto%202%20(rlls).jpg" alt="Bureau organiser — sfeerbeeld" />
+          <img src="/Resources/desk_organiser_bathroom.avif" alt="Bureau organiser — badkamer" />
+          <video src="/Resources/desk_organiser_video.mov" controls class="product-video"></video>
+          <button class="slider-arrow arrow-next" aria-label="Volgende afbeelding">
+            <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke="currentColor" fill="none" stroke-width="2" /></svg>
+          </button>
+        </div>
+        <div class="image-dots">
+          <div class="dot active" data-index="0"></div>
+          <div class="dot" data-index="1"></div>
+          <div class="dot" data-index="2"></div>
+          <div class="dot" data-index="3"></div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: Product Details -->
+      <div class="product-details">
+
+        <span class="product-sku">DESK-ORGANISER-001</span>
+
+        <h1 class="product-name">Bureau organiser</h1>
+
+        <p class="product-description">
+          Een <span class="highlight">opbergsysteem</span> dat papieren en bureau-accessoires geordend houdt. Het <span class="highlight">metalen draadgaas</span> maakt alles makkelijk terug te vinden. Ook perfect in vochtige ruimtes als badkamers om make-up en dagelijkse benodigdheden in te bewaren.
+        </p>
+
+        <!-- Prijs + Aantal + CTA -->
+        <div class="price-row">
+          <span class="product-price">€14,95</span>
+
+          <div class="quantity-picker">
+            <button type="button" aria-label="Verminder aantal">−</button>
+            <div class="qty-value">1</div>
+            <button type="button" aria-label="Verhoog aantal">+</button>
+          </div>
+
+          <button class="cta-button">
+            In winkelwagen +
+          </button>
+        </div>
+
+        <!-- Voorraadstatus -->
+        <div class="stock-row">
+          <div class="stock-dot">
+            <svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <span class="stock-label">Op voorraad</span>
+          <span class="stock-link">Zie betaal- en leveringsvoorwaarden</span>
+        </div>
+
+        <hr class="section-divider" />
+
+        <!-- Productdetails (verplaatst van onder de fold) -->
+        <div class="inline-details">
+          <h3>PRODUCTDETAILS</h3>
+          <ul class="key-features-list">
+            <li><span class="bullet"></span>Helpt je alles netjes bij elkaar te houden - van pennen en bureauaccessoires tot USB-sticks en laders.</li>
+            <li><span class="bullet"></span>Geschikt voor gebruik in het hele huis, zelfs in vochtige ruimte zoals de badkamer.</li>
+            <li><span class="bullet"></span>De zachte kunststof doppen beschermen de ondergrond tegen krassen en zorgen dat de bureau organiser stevig staat.</li>
+          </ul>
+        </div>
+
+        <hr class="section-divider" />
+
+        <!-- Onderhoud -->
+        <div class="inline-details">
+          <h3>ONDERHOUD</h3>
+          <ul class="key-features-list">
+            <li><span class="bullet"></span>Reinigen met een vochtig doekje met evt. wat schoonmaakmiddel</li>
+            <li><span class="bullet"></span>Nadrogen met een droge doek</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Image switcher, Zoom & Video script -->
+  <script>
+    const slides = document.querySelectorAll('.product-slides > img, .product-slides > video');
+    const dots = document.querySelectorAll('.image-dots .dot');
+    const thumbs = document.querySelectorAll('.product-thumbnails .thumb');
+    let currentIdx = 0;
+
+    function showSlide(index) {
+      if (index < 0) index = slides.length - 1;
+      if (index >= slides.length) index = 0;
+      currentIdx = index;
+      
+      slides.forEach(s => {
+        s.classList.remove('active', 'zoomed');
+        if (s.tagName === 'VIDEO') {
+          s.pause();
+        }
+        if (s.tagName === 'IMG') {
+          s.style.transformOrigin = 'center center';
+        }
+      });
+      dots.forEach(d => d.classList.remove('active'));
+      thumbs.forEach(t => t.classList.remove('active'));
+      
+      slides[currentIdx].classList.add('active');
+      dots[currentIdx].classList.add('active');
+      thumbs[currentIdx].classList.add('active');
+    }
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => showSlide(idx));
+    });
+
+    thumbs.forEach((thumb, idx) => {
+      thumb.addEventListener('click', () => showSlide(idx));
+    });
+
+    document.querySelector('.arrow-prev').addEventListener('click', () => showSlide(currentIdx - 1));
+    document.querySelector('.arrow-next').addEventListener('click', () => showSlide(currentIdx + 1));
+
+    // Zoom functionality
+    slides.forEach(slide => {
+      if (slide.tagName === 'IMG') {
+        slide.addEventListener('click', (e) => {
+          if (slide.classList.contains('zoomed')) {
+            slide.classList.remove('zoomed');
+            slide.style.transformOrigin = 'center center';
+          } else {
+            slide.classList.add('zoomed');
+            updateZoom(e, slide);
+          }
+        });
+
+        slide.addEventListener('mousemove', (e) => {
+          if (slide.classList.contains('zoomed')) {
+            updateZoom(e, slide);
+          }
+        });
+
+        slide.addEventListener('mouseleave', () => {
+          slide.classList.remove('zoomed');
+          slide.style.transformOrigin = 'center center';
+        });
+      }
+    });
+
+    function updateZoom(e, el) {
+      const rect = el.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      el.style.transformOrigin = `${x}% ${y}%`;
+    }
+  </script>
+
+</body>
+</html>
