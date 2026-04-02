@@ -43,6 +43,33 @@
       transform: scale(2);
       cursor: zoom-out;
     }
+
+    /* Zoom indicator styles */
+    .zoom-indicator {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      width: 32px;
+      height: 32px;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      pointer-events: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      transition: opacity 0.2s;
+    }
+    .zoom-indicator svg {
+      width: 18px;
+      height: 18px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
   </style>
 </head>
 <body>
@@ -111,6 +138,12 @@
       <!-- MIDDLE COLUMN: Product Images -->
       <div class="product-image-col">
         <div class="product-slides">
+          <div class="zoom-indicator" id="zoom-indicator">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
           <button class="slider-arrow arrow-prev" aria-label="Vorige afbeelding">
             <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" stroke="currentColor" fill="none" stroke-width="2" /></svg>
           </button>
@@ -214,6 +247,14 @@
       slides[currentIdx].classList.add('active');
       dots[currentIdx].classList.add('active');
       thumbs[currentIdx].classList.add('active');
+
+      // Update zoom indicator visibility (if any video slides are added later)
+      const zoomInd = document.getElementById('zoom-indicator');
+      if (slides[currentIdx].tagName === 'IMG') {
+        zoomInd.style.display = 'flex';
+      } else {
+        zoomInd.style.display = 'none';
+      }
     }
 
     dots.forEach((dot, idx) => {
