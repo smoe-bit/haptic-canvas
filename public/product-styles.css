@@ -374,7 +374,7 @@ button {
   line-height: 1.7;
 }
 
-.product-description .highlight {
+.highlight {
   background-color: var(--accent);
   padding: 2px 4px;
   border-radius: 3px;
