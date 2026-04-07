@@ -29,6 +29,48 @@
       --header-text: #000;
       --highlight-text: #000;
     }
+
+    /* Zoom functionality */
+    .product-slides {
+      overflow: hidden;
+      position: relative;
+    }
+    .product-slides img {
+      pointer-events: auto !important;
+      transition: transform 0.3s ease-out;
+      cursor: zoom-in;
+    }
+    .product-slides img.zoomed {
+      transform: scale(2);
+      cursor: zoom-out;
+    }
+
+    /* Zoom indicator styles */
+    .zoom-indicator {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      width: 32px;
+      height: 32px;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      pointer-events: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      transition: opacity 0.2s;
+    }
+    .zoom-indicator svg {
+      width: 18px;
+      height: 18px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
   </style>
 </head>
 <body>
@@ -96,6 +138,12 @@
       <!-- MIDDLE COLUMN: Product Images -->
       <div class="product-image-col">
         <div class="product-slides">
+          <div class="zoom-indicator" id="zoom-indicator">
+            <svg viewBox="0 0 24 24">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </div>
           <button class="slider-arrow arrow-prev" aria-label="Vorige afbeelding">
             <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" stroke="currentColor" fill="none" stroke-width="2" /></svg>
           </button>
@@ -173,7 +221,7 @@
     </div>
   </section>
 
-  <!-- Image switcher script -->
+  <!-- Image switcher & Zoom script -->
   <script>
     const slides = document.querySelectorAll('.product-slides img');
     const dots = document.querySelectorAll('.image-dots .dot');
@@ -185,13 +233,24 @@
       if (index >= slides.length) index = 0;
       currentIdx = index;
       
-      slides.forEach(s => s.classList.remove('active'));
+      slides.forEach(s => {
+        s.classList.remove('active', 'zoomed');
+        s.style.transformOrigin = 'center center';
+      });
       dots.forEach(d => d.classList.remove('active'));
       thumbs.forEach(t => t.classList.remove('active'));
       
       slides[currentIdx].classList.add('active');
       dots[currentIdx].classList.add('active');
       thumbs[currentIdx].classList.add('active');
+
+      // Update zoom indicator visibility
+      const zoomInd = document.getElementById('zoom-indicator');
+      if (slides[currentIdx].tagName === 'IMG') {
+        zoomInd.style.display = 'flex';
+      } else {
+        zoomInd.style.display = 'none';
+      }
     }
 
     dots.forEach((dot, idx) => {
@@ -204,6 +263,37 @@
 
     document.querySelector('.arrow-prev').addEventListener('click', () => showSlide(currentIdx - 1));
     document.querySelector('.arrow-next').addEventListener('click', () => showSlide(currentIdx + 1));
+
+    // Zoom functionality
+    slides.forEach(slide => {
+      slide.addEventListener('click', (e) => {
+        if (slide.classList.contains('zoomed')) {
+          slide.classList.remove('zoomed');
+          slide.style.transformOrigin = 'center center';
+        } else {
+          slide.classList.add('zoomed');
+          updateZoom(e, slide);
+        }
+      });
+
+      slide.addEventListener('mousemove', (e) => {
+        if (slide.classList.contains('zoomed')) {
+          updateZoom(e, slide);
+        }
+      });
+
+      slide.addEventListener('mouseleave', () => {
+        slide.classList.remove('zoomed');
+        slide.style.transformOrigin = 'center center';
+      });
+    });
+
+    function updateZoom(e, el) {
+      const rect = el.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      el.style.transformOrigin = `${x}% ${y}%`;
+    }
   </script>
 
 </body>
