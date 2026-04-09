@@ -66,12 +66,25 @@
 
     /* Thumbnail for video */
     .thumb.video-thumb {
+      width: 94px;
+      height: 94px;
       position: relative;
       background: #f5f5f5;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .thumb.video-thumb.active {
+      border-color: var(--accent);
+      border-width: 2px;
+    }
+    .thumb.video-thumb:hover:not(.active) {
+      border-color: #ccc;
     }
     .thumb.video-thumb video {
       width: 100%;
