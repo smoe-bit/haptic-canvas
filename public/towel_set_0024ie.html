@@ -35,6 +35,22 @@
       overflow: hidden;
     }
     .product-slides img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: none;
+    }
+    .product-slides video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: #f5f5f5;
+      display: none;
+    }
+    .product-slides img.active, .product-slides video.active {
+      display: block;
+    }
+    .product-slides img {
       pointer-events: auto !important;
       transition: transform 0.3s ease-out;
       cursor: zoom-in;
@@ -69,6 +85,51 @@
       stroke-width: 2.5;
       stroke-linecap: round;
       stroke-linejoin: round;
+    }
+
+    /* Video thumbnail styles */
+    .product-thumbnails .thumb {
+      width: 94px;
+      height: 94px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      object-fit: contain;
+    }
+    .product-thumbnails .thumb.active {
+      border-color: var(--accent);
+      border-width: 2px;
+    }
+    .video-thumb-container {
+      position: relative;
+      background-color: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .video-thumb-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none; /* Let clicks go to the container */
+    }
+    .play-overlay {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+    .play-overlay svg {
+      width: 12px;
+      height: 12px;
+      fill: #fff;
+      margin-left: 2px;
     }
   </style>
 </head>
@@ -133,6 +194,15 @@
         <img src="/Opgevouwen%20badhanddoeken.jpg" alt="Thumbnail 1" class="thumb active" data-index="0" />
         <img src="/Prodfoto%202%20cond56%20bh.jpg" alt="Thumbnail 2" class="thumb" data-index="1" />
         <img src="/Productfoto%203%20closeup.jpg" alt="Thumbnail 3" class="thumb" data-index="2" />
+        <img src="/Resources/Productfoto%204%20grijs.png" alt="Thumbnail 4" class="thumb" data-index="3" />
+        <div class="video-thumb-container thumb" data-index="4">
+          <video src="/Resources/Finale%20versie%20video%20badhanddoek.mp4" muted playsinline></video>
+          <div class="play-overlay">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+          </div>
+        </div>
       </div>
 
       <!-- MIDDLE COLUMN: Product Images -->
@@ -150,6 +220,8 @@
           <img class="active" src="/Opgevouwen%20badhanddoeken.jpg" alt="Set of 2 soft bath towels — standard photo" />
           <img src="/Prodfoto%202%20cond56%20bh.jpg" alt="Set of 2 soft bath towels — lifestyle image" />
           <img src="/Productfoto%203%20closeup.jpg" alt="Set of 2 soft bath towels — detail" />
+          <img src="/Resources/Productfoto%204%20grijs.png" alt="Set of 2 soft bath towels — extra photo" />
+          <video src="/Resources/Finale%20versie%20video%20badhanddoek.mp4" controls></video>
           <button class="slider-arrow arrow-next" aria-label="Next image">
             <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" stroke="currentColor" fill="none" stroke-width="2" /></svg>
           </button>
@@ -158,6 +230,8 @@
           <div class="dot active" data-index="0"></div>
           <div class="dot" data-index="1"></div>
           <div class="dot" data-index="2"></div>
+          <div class="dot" data-index="3"></div>
+          <div class="dot" data-index="4"></div>
         </div>
       </div>
 
@@ -227,9 +301,9 @@
 
   <!-- Image switcher & Zoom script -->
   <script>
-    const slides = document.querySelectorAll('.product-slides img');
+    const slides = document.querySelectorAll('.product-slides img, .product-slides video');
     const dots = document.querySelectorAll('.image-dots .dot');
-    const thumbs = document.querySelectorAll('.product-thumbnails img');
+    const thumbs = document.querySelectorAll('.product-thumbnails .thumb');
     let currentIdx = 0;
 
     function showSlide(index) {
@@ -240,6 +314,10 @@
       slides.forEach(s => {
         s.classList.remove('active', 'zoomed');
         s.style.transformOrigin = 'center center';
+        if (s.tagName === 'VIDEO') {
+          s.pause();
+          s.currentTime = 0;
+        }
       });
       dots.forEach(d => d.classList.remove('active'));
       thumbs.forEach(t => t.classList.remove('active'));
@@ -270,26 +348,28 @@
 
     // Zoom functionality
     slides.forEach(slide => {
-      slide.addEventListener('click', (e) => {
-        if (slide.classList.contains('zoomed')) {
+      if (slide.tagName === 'IMG') {
+        slide.addEventListener('click', (e) => {
+          if (slide.classList.contains('zoomed')) {
+            slide.classList.remove('zoomed');
+            slide.style.transformOrigin = 'center center';
+          } else {
+            slide.classList.add('zoomed');
+            updateZoom(e, slide);
+          }
+        });
+
+        slide.addEventListener('mousemove', (e) => {
+          if (slide.classList.contains('zoomed')) {
+            updateZoom(e, slide);
+          }
+        });
+
+        slide.addEventListener('mouseleave', () => {
           slide.classList.remove('zoomed');
           slide.style.transformOrigin = 'center center';
-        } else {
-          slide.classList.add('zoomed');
-          updateZoom(e, slide);
-        }
-      });
-
-      slide.addEventListener('mousemove', (e) => {
-        if (slide.classList.contains('zoomed')) {
-          updateZoom(e, slide);
-        }
-      });
-
-      slide.addEventListener('mouseleave', () => {
-        slide.classList.remove('zoomed');
-        slide.style.transformOrigin = 'center center';
-      });
+        });
+      }
     });
 
     function updateZoom(e, el) {
